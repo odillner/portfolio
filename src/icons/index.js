@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 /* TODO: styled components && scaling */
 
-const IconGenerator = ({type, active, scale}) => {
+const IconGenerator = ({type, active, scale, color}) => {
     if (!type) {
         return null
     }
@@ -17,7 +17,7 @@ const IconGenerator = ({type, active, scale}) => {
             height={(scale) ? scale : 50}
             viewBox="0 0 24 24"
             strokeWidth="1"
-            stroke={(active) ? "#1abc9c" : "#9E9E9E"}
+            stroke={(color) ? color : (active) ? "#1abc9c" : "#9E9E9E"}
             fill="none"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -102,6 +102,25 @@ const Contact = () => {
     )
 }
 
+const Minimize = () => {
+    return (
+        <>
+            <path stroke="none" d="M0 0h24v24H0z"/>
+            <line x1="5" y1="12" x2="19" y2="12" />
+        </>
+    )
+}
+
+const Close = () => {
+    return (
+        <>
+            <path stroke="none" d="M0 0h24v24H0z"/>
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+        </>
+    )
+}
+
 const icons = {
     Logo,
     Home,
@@ -109,7 +128,9 @@ const icons = {
     LinkedIn,
     About,
     Skills,
-    Contact
+    Contact,
+    Minimize,
+    Close
 }
 
 export default IconGenerator

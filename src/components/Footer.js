@@ -13,16 +13,16 @@ const Wrapper = styled.div`
     height: 40px;
     z-index: 10;
     background: #181818;
+    display: flex
 `
 
 const MinimizedItem = styled.div`
-    position: fixed;
-    bottom: 0;
-    left 60px;
-    width: 100%;
-    height: 40px;
+    position: relative;
+    width: 100px;
+    height: 80%;
     z-index: 10;
-    background: #181818;
+    background: black;
+    padding-left: 5px;
 `
 
 const Footer = () => {
@@ -41,9 +41,8 @@ const Footer = () => {
                         <MinimizedItem
                             key={window.id}
                             onClick={() => maximize(window)}
-                            variant='menu'
                         >
-                            <IconGenerator type={window.type} scale="25" active></IconGenerator>
+                            <IconGenerator type={window.type} scale="25"></IconGenerator>
                             {window.type}
                         </MinimizedItem>
                     )

@@ -12,15 +12,20 @@ const Wrapper = styled.div`
     width: 500px;
     height: 500px;
     position: absolute;
-    background: #181818;
     border: solid black 1px;
     z-index: ${props => props.zIndex}
 `
 const Header = styled.div`
-    background: #9E9E9E;
+    background: black;
     display: flex;
+    height: 6%;
+    justify-content: space-between;
+    cursor: move;
 `
 const Content = styled.div`
+    display: flex;
+    width: 100%;
+    height: 94%;
     background: #181818;
 `
 
@@ -71,11 +76,13 @@ const StandardWindow = (props) => {
             onDrag={drag}
         >
             <Wrapper zIndex = {getzIndex()}>
-                <Header className='window-header'>
-                    <IconGenerator type={item.type} scale="25" active/>
+                <Header>
+                    <IconGenerator type={item.type} scale="25" active={current===id}/>
                     {props.title}
-                    <MinimizeButton click={minimize}/>
-                    <CloseButton click={close}/>
+                    <div>
+                        <MinimizeButton click={minimize}/>
+                        <CloseButton click={close}/>
+                    </div>
                 </Header>
                 <strong className="no-cursor">
                     <Content>

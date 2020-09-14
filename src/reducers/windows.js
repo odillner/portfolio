@@ -178,9 +178,17 @@ export const maximizeWindow = (item) => {
         ...item,
         minimized: false
     }
-    return {
-        type: 'UPDATE_WINDOW',
-        data: newWindow
+
+    return dispatch => {
+        dispatch ({
+            type: 'UPDATE_WINDOW',
+            data: newWindow
+        })
+
+        dispatch ({
+            type: 'SET_CURRENT_WINDOW',
+            data: newWindow.id
+        })
     }
 }
 

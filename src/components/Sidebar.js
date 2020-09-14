@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import styled from 'styled-components'
-import {Link, useHistory} from 'react-router-dom'
+import {Link, useHistory, useLocation} from 'react-router-dom'
 
 import {addWindow, closeWindow, maximizeWindow} from '../reducers/windows'
 
@@ -13,6 +13,7 @@ const PageNavItems = ({type}) => {
     const item = useSelector(state => state.windows.items).find(item => item.type === type)
     const dispatch = useDispatch()
     const history = useHistory()
+    const location = useLocation()
 
     const isActive = () => {
         return (item) ? true : false
@@ -21,17 +22,20 @@ const PageNavItems = ({type}) => {
     const onClick = () => {
         if (item) {
             if (item.minimized) {
+                history.push(path)
                 dispatch(maximizeWindow(item))
             } else {
+                history.push('/')
                 dispatch(closeWindow(item.id))
             }
         } else {
+            history.push(path)
             dispatch(addWindow(type))
         }
     }
     return (
         <div onClick={() => onClick()}>
-            <Hoverable alt={<p>{type}</p>}>
+            <Hoverable alt={<IconGenerator type={type} active/>}>
                 <IconGenerator type={type} active={isActive()}/>
             </Hoverable>
         </div>
