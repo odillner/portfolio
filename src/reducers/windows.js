@@ -1,4 +1,5 @@
 import _ from 'lodash'
+import { useHistory } from 'react-router-dom'
 
 const initialState = {
     current: 0,
@@ -180,10 +181,11 @@ export const closeWindow = (id) => {
     }
 }
 
-export const selectWindow = (id) => {
+export const selectWindow = (item) => {
+
     return {
         type: 'SET_CURRENT_WINDOW',
-        data: id
+        data: item.id
     }
 }
 

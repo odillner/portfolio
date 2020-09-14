@@ -7,7 +7,7 @@ import Footer from './components/Footer'
 
 import GlobalStyles from './styles/'
 import WindowRenderer from './windows/WindowRenderer'
-
+import Routing from './Routing'
 import {initWindows, addWindow} from './reducers/windows'
 
 
@@ -16,11 +16,11 @@ function App() {
 
     useEffect(() => {
         dispatch(initWindows())
-        dispatch(addWindow('about'))
     }, [])
 
     return (
         <>
+            <Routing/>
             <GlobalStyles/>
             <Sidebar/>
             <Footer/>

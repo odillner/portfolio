@@ -13,8 +13,6 @@ const Footer = () => {
     return(
         <footer style={{position: 'fixed', bottom: '0', left: '0', width: '100%', zIndex: 1000, display: 'inline-block'}}>
             <div
-                variant='outside'
-                shadow
                 style={{padding: '1rem', lineHeight: '1.5', width: '100%',}}
             >
                 {windows.map(window => {

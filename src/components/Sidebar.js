@@ -1,17 +1,23 @@
 import React, {useState} from 'react'
 import styled from 'styled-components'
-import {useLocation} from 'react-router-dom'
+import {Link, useLocation} from 'react-router-dom'
 
 import IconGenerator from '../icons'
 import Hoverable from './Hoverable/Hoverable'
 
-const NavItem = ({type, initialActive}) => {
-    const [active, setActive] = useState(initialActive)
+const NavItem = ({type}) => {
+    const location = useLocation()
+    const path = `/${type}`
 
+    const isActive = () => {
+        return (location.pathname === path)
+    }
     return (
-        <Hoverable alt={<p>{type}</p>}>
-            <IconGenerator type={type} active={active}/>
-        </Hoverable>
+        <Link to={path}>
+            <Hoverable alt={<p>{type}</p>}>
+                <IconGenerator type={type} active={isActive()}/>
+            </Hoverable>
+        </Link>
     )
 }
 

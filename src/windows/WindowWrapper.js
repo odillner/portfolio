@@ -10,12 +10,14 @@ import {closeWindow, selectWindow, updateWindowPosition, minimizeWindow} from '.
 const Wrapper = styled.div`
     position: absolute;
     background: #181818;
+    border: solid black 1px;
 `
 const Header = styled.div`
-
+    background: #1abc9c;
+    display: flex;
 `
 const Content = styled.div`
-
+    background: #181818;
 `
 
 const StandardWindow = (props) => {
@@ -39,7 +41,8 @@ const StandardWindow = (props) => {
     }
 
     const select = () => {
-        dispatch(selectWindow(id))
+        history.push(`/${item.type}`)
+        dispatch(selectWindow(item))
     }
 
     const minimize = () => {
