@@ -1,23 +1,50 @@
 import React, {useState} from 'react'
+import {useSelector, useDispatch} from 'react-redux'
 import styled from 'styled-components'
-import {Link, useLocation} from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
+
+import {addWindow, closeWindow, maximizeWindow} from '../reducers/windows'
 
 import IconGenerator from '../icons'
 import Hoverable from './Hoverable/Hoverable'
 
-const NavItem = ({type}) => {
-    const location = useLocation()
+const PageNavItems = ({type}) => {
     const path = `/${type}`
+    const item = useSelector(state => state.windows.items).find(item => item.type === type)
+    const dispatch = useDispatch()
+    const history = useHistory()
 
     const isActive = () => {
-        return (location.pathname === path)
+        return (item) ? true : false
+    }
+
+    const onClick = () => {
+        if (item) {
+            if (item.minimized) {
+                dispatch(maximizeWindow(item))
+            } else {
+                dispatch(closeWindow(item.id))
+            }
+        } else {
+            dispatch(addWindow(type))
+        }
     }
     return (
-        <Link to={path}>
+        <div onClick={() => onClick()}>
             <Hoverable alt={<p>{type}</p>}>
                 <IconGenerator type={type} active={isActive()}/>
             </Hoverable>
-        </Link>
+        </div>
+    )
+}
+
+const ExternalNavItem = ({type, link}) => {
+    return (
+        <a href={link}>
+            <Hoverable alt={<IconGenerator type={type} active/>}>
+                <IconGenerator type={type}/>
+            </Hoverable>
+        </a>
     )
 }
 
@@ -32,7 +59,7 @@ const LogoWrapper = styled.div`
 const Logo = () => {
     return (
         <LogoWrapper>
-            <NavItem type='Logo'></NavItem>
+            <IconGenerator type="Logo"/>
         </LogoWrapper>
     )
 }
@@ -60,7 +87,7 @@ const BottomItems = styled.div`
 `
 const SideNav = styled.div`
     background: #181818;
-    width: 70px;
+    width: 60px;
     height: 100%;
     position: fixed;
     top: 0;
@@ -76,14 +103,14 @@ const Sidebar = () => {
         <SideNav>
             <Logo/>
             <MainItems>
-                <NavItem type='Home'></NavItem>
-                <NavItem type='About'></NavItem>
-                <NavItem type='Skills'></NavItem>
-                <NavItem type='Contact'></NavItem>
+                <PageNavItems type='Home'></PageNavItems>
+                <PageNavItems type='About'></PageNavItems>
+                <PageNavItems type='Skills'></PageNavItems>
+                <PageNavItems type='Contact'></PageNavItems>
             </MainItems>
             <BottomItems>
-                <NavItem type='LinkedIn'></NavItem>
-                <NavItem type='GitHub'></NavItem>
+                <ExternalNavItem type='LinkedIn' link='https://www.linkedin.com/in/ossiandillner/'></ExternalNavItem>
+                <ExternalNavItem type='GitHub' link='https://github.com/odillner/'></ExternalNavItem>
             </BottomItems>
         </SideNav>
     )

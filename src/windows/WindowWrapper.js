@@ -6,14 +6,18 @@ import styled from 'styled-components'
 
 import {CloseButton, MinimizeButton} from './WindowButtons'
 import {closeWindow, selectWindow, updateWindowPosition, minimizeWindow} from '../reducers/windows'
+import IconGenerator from '../icons'
 
 const Wrapper = styled.div`
+    width: 500px;
+    height: 500px;
     position: absolute;
     background: #181818;
     border: solid black 1px;
+    z-index: ${props => props.zIndex}
 `
 const Header = styled.div`
-    background: #1abc9c;
+    background: #9E9E9E;
     display: flex;
 `
 const Content = styled.div`
@@ -66,18 +70,16 @@ const StandardWindow = (props) => {
             onMouseDown={() => select()}
             onDrag={drag}
         >
-            <Wrapper
-                style={{position: 'absolute', zIndex: getzIndex()}}
-            >
+            <Wrapper zIndex = {getzIndex()}>
                 <Header className='window-header'>
+                    <IconGenerator type={item.type} scale="25" active/>
                     {props.title}
-                    <CloseButton click={close}/>
                     <MinimizeButton click={minimize}/>
+                    <CloseButton click={close}/>
                 </Header>
                 <strong className="no-cursor">
                     <Content>
                         {props.children}
-                        ssfasdfasdfasdf
                     </Content>
                 </strong>
             </Wrapper>

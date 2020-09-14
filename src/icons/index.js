@@ -3,15 +3,18 @@ import styled from 'styled-components'
 
 /* TODO: styled components && scaling */
 
-const IconGenerator = ({active, type}) => {
+const IconGenerator = ({type, active, scale}) => {
+    if (!type) {
+        return null
+    }
     const Icon = icons[type]
 
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
             className="icon icon-tabler icon-tabler-letter-o"
-            width="48"
-            height="48"
+            width={(scale) ? scale : 50}
+            height={(scale) ? scale : 50}
             viewBox="0 0 24 24"
             strokeWidth="1"
             stroke={(active) ? "#1abc9c" : "#9E9E9E"}

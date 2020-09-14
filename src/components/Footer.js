@@ -1,6 +1,29 @@
 import React from 'react'
 import {useSelector, useDispatch} from 'react-redux'
+import styled from 'styled-components'
+
 import {closeWindow, maximizeWindow} from '../reducers/windows'
+import IconGenerator from '../icons'
+
+const Wrapper = styled.div`
+    position: fixed;
+    bottom: 0;
+    left 60px;
+    width: 100%;
+    height: 40px;
+    z-index: 10;
+    background: #181818;
+`
+
+const MinimizedItem = styled.div`
+    position: fixed;
+    bottom: 0;
+    left 60px;
+    width: 100%;
+    height: 40px;
+    z-index: 10;
+    background: #181818;
+`
 
 const Footer = () => {
     const windows = useSelector(state => state.windows.items)
@@ -11,25 +34,22 @@ const Footer = () => {
     }
 
     return(
-        <footer style={{position: 'fixed', bottom: '0', left: '0', width: '100%', zIndex: 1000, display: 'inline-block'}}>
-            <div
-                style={{padding: '1rem', lineHeight: '1.5', width: '100%',}}
-            >
-                {windows.map(window => {
-                    if (window.minimized) {
-                        return (
-                            <button
-                                key={window.id}
-                                onClick={() => maximize(window)}
-                                variant='menu'
-                            >
-                                {window.type}
-                            </button>
-                        )
-                    }
-                })}
-            </div>
-        </footer>
+        <Wrapper>
+            {windows.map(window => {
+                if (window.minimized) {
+                    return (
+                        <MinimizedItem
+                            key={window.id}
+                            onClick={() => maximize(window)}
+                            variant='menu'
+                        >
+                            <IconGenerator type={window.type} scale="25" active></IconGenerator>
+                            {window.type}
+                        </MinimizedItem>
+                    )
+                }
+            })}
+        </Wrapper>
     )
 }
 

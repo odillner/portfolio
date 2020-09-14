@@ -1,5 +1,4 @@
 import _ from 'lodash'
-import { useHistory } from 'react-router-dom'
 
 const initialState = {
     current: 0,
@@ -33,13 +32,25 @@ const windowReducer = (state = initialState, action) => {
 
         if (identical) {
             if (!state.storageChecked) {
+                /* if item has been created before localstorage has been checked replace it with item from localstorage*/
                 const newState = {
                     ...state,
                     items: state.items.map(item => (item.id === identical.id) ? newItem : item)
                 }
 
                 return newState
+            } else if (identical.minimized) {
+                /* if item already exists and is minimized maximize it */
+                identical.minimized = false
+
+                const newState = {
+                    ...state,
+                    items: state.items.map(item => (item.id === identical.id) ? identical : item)
+                }
+
+                return newState
             }
+
             return state
         }
 
@@ -128,8 +139,8 @@ export const addWindow = (type, initialState, x, y) => {
     const newWindow = {
         type,
         initialState,
-        x: (x) ? x : 0,
-        y: (y) ? y : 0,
+        x: (x) ? x : 100,
+        y: (y) ? y : 50,
         id: Math.floor(Math.random()*10000),
         minimized: false
     }

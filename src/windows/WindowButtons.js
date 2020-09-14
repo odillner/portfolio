@@ -52,26 +52,23 @@ const MinimizeIcon = styled.div`
   }
 `
 
+const StyledButton = styled.button`
+  size: sm;
+  position: sticky;
+`
+
 export const CloseButton = ({click}) => {
     return (
-        <button
-            style={{float: 'right', margin: '3px'}}
-            size='sm'
-            onClick={() => click()}
-        >
+        <StyledButton onClick={click}>
             <CloseIcon/>
-        </button>
+        </StyledButton>
     )
 }
 
 export const MinimizeButton = ({click}) => {
     return (
-        <button
-            style={{float: 'right', margin: '3px'}}
-            size='sm'
-            onClick={() => click()}
-        >
+        <StyledButton onClick={click}>
             <MinimizeIcon/>
-        </button>
+        </StyledButton>
     )
 }

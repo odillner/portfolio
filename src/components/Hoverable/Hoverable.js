@@ -7,7 +7,6 @@ const Alt = styled.div`
     height: 100%;
     display:none;
     vertical-align: middle;
-
     $p {
         text-align: center;
     }
@@ -16,7 +15,8 @@ const Alt = styled.div`
 const Default = styled.div`
     width: 100%;
     height: 100%;
-    display:inline;
+    display:table-cell;
+    vertical-align: middle;
 `
 
 const Wrapper = styled.div`
