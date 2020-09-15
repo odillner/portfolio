@@ -12,7 +12,7 @@ const StyledButton = styled.button`
 export const CloseButton = ({click}) => {
     return (
         <StyledButton onClick={click}>
-            <IconGenerator type="Close" scale={20} color="black"/>
+            <IconGenerator type="Close" dimensions={20} color="black"/>
         </StyledButton>
     )
 }
@@ -20,7 +20,7 @@ export const CloseButton = ({click}) => {
 export const MinimizeButton = ({click}) => {
     return (
         <StyledButton onClick={click}>
-            <IconGenerator type="Minimize" scale={20} color="black"/>
+            <IconGenerator type="Minimize" dimensions={20} color="black"/>
         </StyledButton>
     )
 }

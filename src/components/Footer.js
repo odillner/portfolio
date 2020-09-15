@@ -1,8 +1,11 @@
 import React from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import styled from 'styled-components'
+import ToggleButton from 'react-bootstrap/ToggleButton'
 
 import {closeWindow, maximizeWindow} from '../reducers/windows'
+import {toggleTheme} from '../reducers/theme'
+import ThemeButton from './ThemeButton'
 import IconGenerator from '../icons'
 
 const Wrapper = styled.div`
@@ -12,8 +15,8 @@ const Wrapper = styled.div`
     width: 100%;
     height: 40px;
     z-index: 10;
-    background: #181818;
-    display: flex
+    background: var(--alt-bg-color);
+    display: flex;
 `
 
 const MinimizedItem = styled.div`
@@ -24,6 +27,7 @@ const MinimizedItem = styled.div`
     background: black;
     padding-left: 5px;
 `
+
 
 const Footer = () => {
     const windows = useSelector(state => state.windows.items)
@@ -42,12 +46,13 @@ const Footer = () => {
                             key={window.id}
                             onClick={() => maximize(window)}
                         >
-                            <IconGenerator type={window.type} scale="25"></IconGenerator>
+                            <IconGenerator type={window.type} dimensions={25}></IconGenerator>
                             {window.type}
                         </MinimizedItem>
                     )
                 }
             })}
+            <ThemeButton/>
         </Wrapper>
     )
 }

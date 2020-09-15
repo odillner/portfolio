@@ -26,7 +26,7 @@ const Content = styled.div`
     display: flex;
     width: 100%;
     height: 94%;
-    background: #181818;
+    background: var(--alt-bg-color);;
 `
 
 const StandardWindow = (props) => {
@@ -40,7 +40,7 @@ const StandardWindow = (props) => {
     const close = () => {
         dispatch(closeWindow(id))
 
-        if (last===id) {
+        if (current===id) {
             history.push('/')
         }
     }
@@ -77,7 +77,7 @@ const StandardWindow = (props) => {
         >
             <Wrapper zIndex = {getzIndex()}>
                 <Header>
-                    <IconGenerator type={item.type} scale="25" active={current===id}/>
+                    <IconGenerator type={item.type} dimensions={25} active={current===id}/>
                     {props.title}
                     <div>
                         <MinimizeButton click={minimize}/>

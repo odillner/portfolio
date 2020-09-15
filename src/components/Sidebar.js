@@ -35,8 +35,8 @@ const PageNavItems = ({type}) => {
     }
     return (
         <div onClick={() => onClick()}>
-            <Hoverable alt={<IconGenerator type={type} active/>}>
-                <IconGenerator type={type} active={isActive()}/>
+            <Hoverable alt={<IconGenerator type={type} active dimensions={50}/>}>
+                <IconGenerator type={type} dimensions={50} active={isActive()}/>
             </Hoverable>
         </div>
     )
@@ -45,8 +45,8 @@ const PageNavItems = ({type}) => {
 const ExternalNavItem = ({type, link}) => {
     return (
         <a href={link}>
-            <Hoverable alt={<IconGenerator type={type} active/>}>
-                <IconGenerator type={type}/>
+            <Hoverable alt={<IconGenerator type={type} active dimensions={50}/>}>
+                <IconGenerator type={type} dimensions={50}/>
             </Hoverable>
         </a>
     )
@@ -69,7 +69,7 @@ const Logo = () => {
 }
 
 const MainItems = styled.div`
-    background: #181818;
+    background: var(--alt-bg-color);
     display: block;
     padding: 0;
     padding-bottom: 0px;
@@ -79,7 +79,7 @@ const MainItems = styled.div`
 
 `
 const BottomItems = styled.div`
-    background: #181818;
+    background: var(--alt-bg-color);
     display: block;
     padding: 0;
     padding-bottom: 0px;
@@ -90,7 +90,7 @@ const BottomItems = styled.div`
 
 `
 const SideNav = styled.div`
-    background: #181818;
+    background: var(--alt-bg-color);
     width: 60px;
     height: 100%;
     position: fixed;

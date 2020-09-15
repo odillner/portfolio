@@ -3,27 +3,38 @@ import styled from 'styled-components'
 
 /* TODO: styled components && scaling */
 
-const IconGenerator = ({type, active, scale, color}) => {
+
+const IconWrapper = styled.svg`
+    xmlns="http://www.w3.org/2000/svg";
+    width: ${props => props.dimensions}px;
+    height: ${props => props.dimensions}px;
+    stroke-width: 1;
+    stroke: ${props => props.color};
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+`
+
+const IconGenerator = ({type, active, dimensions, color}) => {
     if (!type) {
         return null
     }
     const Icon = icons[type]
 
+    let iconColor = "#9E9E9E"
+
+    if (color) {
+        iconColor = color
+    } else {
+        if (active) {
+            iconColor = "#1abc9c"
+        }
+    }
+
     return (
-        <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="icon icon-tabler icon-tabler-letter-o"
-            width={(scale) ? scale : 50}
-            height={(scale) ? scale : 50}
-            viewBox="0 0 24 24"
-            strokeWidth="1"
-            stroke={(color) ? color : (active) ? "#1abc9c" : "#9E9E9E"}
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-        >
+        <IconWrapper color={iconColor} viewBox="0 0 24 24" dimensions={dimensions}>
             <Icon/>
-        </svg>
+        </IconWrapper>
     )
 }
 
@@ -121,6 +132,40 @@ const Close = () => {
     )
 }
 
+const Dark = () => {
+    return (
+        <>
+            <path stroke="none" d="M0 0h24v24H0z"/>
+            <circle cx="12" cy="12" r="3" />
+            <line x1="12" y1="5" x2="12" y2="5.01" />
+            <line x1="17" y1="7" x2="17" y2="7.01" />
+            <line x1="19" y1="12" x2="19" y2="12.01" />
+            <line x1="17" y1="17" x2="17" y2="17.01" />
+            <line x1="12" y1="19" x2="12" y2="19.01" />
+            <line x1="7" y1="17" x2="7" y2="17.01" />
+            <line x1="5" y1="12" x2="5" y2="12.01" />
+            <line x1="7" y1="7" x2="7" y2="7.01" />
+        </>
+    )
+}
+
+const Light = () => {
+    return (
+        <>
+            <path stroke="none" d="M0 0h24v24H0z"/>
+            <circle cx="12" cy="12" r="3" />
+            <line x1="12" y1="5" x2="12" y2="3" />
+            <line x1="17" y1="7" x2="18.4" y2="5.6" />
+            <line x1="19" y1="12" x2="21" y2="12" />
+            <line x1="17" y1="17" x2="18.4" y2="18.4" />
+            <line x1="12" y1="19" x2="12" y2="21" />
+            <line x1="7" y1="17" x2="5.6" y2="18.4" />
+            <line x1="6" y1="12" x2="4" y2="12" />
+            <line x1="7" y1="7" x2="5.6" y2="5.6" />
+        </>
+    )
+}
+
 const icons = {
     Logo,
     Home,
@@ -130,7 +175,9 @@ const icons = {
     Skills,
     Contact,
     Minimize,
-    Close
+    Close,
+    Dark,
+    Light
 }
 
 export default IconGenerator
