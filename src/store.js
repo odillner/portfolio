@@ -1,9 +1,9 @@
-import {createStore, combineReducers, applyMiddleware} from 'redux'
-import {composeWithDevTools} from 'redux-devtools-extension'
-import thunk from 'redux-thunk'
+import {createStore, combineReducers, applyMiddleware} from "redux"
+import {composeWithDevTools} from "redux-devtools-extension"
+import thunk from "redux-thunk"
 
-import windowReducer from './reducers/windows'
-import themeReducer from './reducers/theme'
+import windowReducer from "./reducers/windows"
+import themeReducer from "./reducers/theme"
 
 const reducer = combineReducers({
     windows: windowReducer,

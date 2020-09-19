@@ -1,13 +1,13 @@
-import React, {useEffect} from 'react'
-import {useDispatch, useSelector} from 'react-redux'
+import React, {useEffect} from "react"
+import {useDispatch, useSelector} from "react-redux"
 
-import Sidebar from './components/Sidebar'
-import Footer from './components/Footer'
+import Sidebar from "./components/Sidebar"
+import Footer from "./components/Footer"
 
-import {GlobalStyles, Themes} from './styles/'
-import WindowRenderer from './windows/WindowRenderer'
-import Routing from './Routing'
-import {initWindows} from './reducers/windows'
+import {GlobalStyles, Themes} from "./styles/"
+import WindowRenderer from "./windows/WindowRenderer"
+import Routing from "./Routing"
+import {initWindows} from "./reducers/windows"
 
 function App() {
     const dispatch = useDispatch()
@@ -17,7 +17,7 @@ function App() {
         dispatch(initWindows())
     }, [])
 
-    const CurrentTheme = Themes[theme]
+    const CurrentTheme = Themes[theme].obj
 
     return (
         <>

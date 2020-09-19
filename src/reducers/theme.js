@@ -1,15 +1,16 @@
 const themeReducer = (state = 0, action) => {
     switch (action.type) {
-    case 'TOGGLE_THEME': {
-        return 1 - state
+    case "CHANGE_THEME": {
+        return action.data
     }
     default: return state
     }
 }
 
-export const toggleTheme = () => {
+export const changeTheme = (themeID) => {
     return {
-        type: "TOGGLE_THEME",
+        type: "CHANGE_THEME",
+        data: themeID
     }
 }
 

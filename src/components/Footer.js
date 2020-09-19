@@ -1,12 +1,12 @@
-import React from 'react'
-import {useSelector, useDispatch} from 'react-redux'
-import styled from 'styled-components'
-import ToggleButton from 'react-bootstrap/ToggleButton'
+import React from "react"
+import {useSelector, useDispatch} from "react-redux"
+import styled from "styled-components"
+import ToggleButton from "react-bootstrap/ToggleButton"
 
-import {closeWindow, maximizeWindow} from '../reducers/windows'
-import {toggleTheme} from '../reducers/theme'
-import ThemeButton from './ThemeButton'
-import IconGenerator from '../icons'
+import {closeWindow, maximizeWindow} from "../reducers/windows"
+import {toggleTheme} from "../reducers/theme"
+import ThemeButton from "./ThemeButton"
+import IconGenerator from "../icons"
 
 const Wrapper = styled.div`
     position: fixed;

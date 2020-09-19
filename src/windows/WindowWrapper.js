@@ -1,12 +1,12 @@
-import React from 'react'
-import Draggable from 'react-draggable'
-import {useDispatch, useSelector} from 'react-redux'
-import {useHistory} from 'react-router-dom'
-import styled from 'styled-components'
+import React from "react"
+import Draggable from "react-draggable"
+import {useDispatch, useSelector} from "react-redux"
+import {useHistory} from "react-router-dom"
+import styled from "styled-components"
 
-import {CloseButton, MinimizeButton} from './WindowButtons'
-import {closeWindow, selectWindow, updateWindowPosition, minimizeWindow} from '../reducers/windows'
-import IconGenerator from '../icons'
+import {CloseButton, MinimizeButton} from "./WindowButtons"
+import {closeWindow, selectWindow, updateWindowPosition, minimizeWindow} from "../reducers/windows"
+import IconGenerator from "../icons"
 
 const Wrapper = styled.div`
     width: 500px;
@@ -41,7 +41,7 @@ const StandardWindow = (props) => {
         dispatch(closeWindow(id))
 
         if (current===id) {
-            history.push('/')
+            history.push("/")
         }
     }
 

@@ -1,14 +1,14 @@
-import React, {useEffect} from 'react'
-import {useDispatch} from 'react-redux'
-import {Switch, Route} from 'react-router-dom'
+import React, {useEffect} from "react"
+import {useDispatch} from "react-redux"
+import {Switch, Route} from "react-router-dom"
 
-import {addWindow} from './reducers/windows'
+import {addWindow} from "./reducers/windows"
 
 const routes = [
-    'About',
-    'Contact',
-    'Home',
-    'Skills'
+    "About",
+    "Contact",
+    "Home",
+    "Skills"
 ]
 
 const Routing = () => {

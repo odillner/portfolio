@@ -1,6 +1,6 @@
-import React from 'react'
-import styled from 'styled-components'
-import IconGenerator from '../icons'
+import React from "react"
+import styled from "styled-components"
+import IconGenerator from "../icons"
 
 const StyledButton = styled.button`
   width: 20;

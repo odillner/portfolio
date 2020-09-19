@@ -1,6 +1,6 @@
-import React from 'react'
+import React from "react"
 
-import StandardWindow from '../WindowWrapper'
+import StandardWindow from "../WindowWrapper"
 
 const About = ({id}) => {
     return (

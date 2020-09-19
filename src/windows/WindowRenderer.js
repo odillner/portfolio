@@ -1,13 +1,13 @@
-import React from 'react'
-import {useSelector} from 'react-redux'
+import React from "react"
+import {useSelector} from "react-redux"
 
-import windowTypes from './types/'
+import windowTypes from "./types/"
 
 function WindowRenderer() {
     const windows = useSelector(state => state.windows)
 
     return (
-        <div style={{position: 'relative'}}>
+        <div style={{position: "relative"}}>
             {windows.items.map(item => {
                 const Component = windowTypes[item.type]
 

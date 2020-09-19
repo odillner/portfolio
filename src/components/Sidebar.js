@@ -1,19 +1,19 @@
-import React, {useState} from 'react'
-import {useSelector, useDispatch} from 'react-redux'
-import styled from 'styled-components'
-import {Link, useHistory, useLocation} from 'react-router-dom'
+import React, {useState} from "react"
+import {useSelector, useDispatch} from "react-redux"
+import styled from "styled-components"
+import {Link, useHistory, useLocation} from "react-router-dom"
 
-import {addWindow, closeWindow, maximizeWindow} from '../reducers/windows'
+import {addWindow, closeWindow, maximizeWindow} from "../reducers/windows"
 
-import IconGenerator from '../icons'
-import Hoverable from './Hoverable/Hoverable'
+import IconGenerator from "../icons"
+import Hoverable from "./Hoverable/Hoverable"
+import Logo from "./Logo"
 
 const PageNavItems = ({type}) => {
     const path = `/${type}`
     const item = useSelector(state => state.windows.items).find(item => item.type === type)
     const dispatch = useDispatch()
     const history = useHistory()
-    const location = useLocation()
 
     const isActive = () => {
         return (item) ? true : false
@@ -25,7 +25,7 @@ const PageNavItems = ({type}) => {
                 history.push(path)
                 dispatch(maximizeWindow(item))
             } else {
-                history.push('/')
+                history.push("/")
                 dispatch(closeWindow(item.id))
             }
         } else {
@@ -44,34 +44,20 @@ const PageNavItems = ({type}) => {
 
 const ExternalNavItem = ({type, link}) => {
     return (
-        <a href={link}>
-            <Hoverable alt={<IconGenerator type={type} active dimensions={50}/>}>
-                <IconGenerator type={type} dimensions={50}/>
-            </Hoverable>
-        </a>
+        <div>
+            <a href={link}>
+                <Hoverable alt={<IconGenerator type={type} active dimensions={40}/>}>
+                    <IconGenerator type={type} dimensions={40}/>
+                </Hoverable>
+            </a>
+        </div>
     )
 }
 
-const LogoWrapper = styled.div`
-    display: block;
-    height: 70px;
-    background-color: black;
-    text-color: white;
-    text-align: center;
-`
-
-const Logo = () => {
-    return (
-        <LogoWrapper>
-            <IconGenerator type="Logo"/>
-        </LogoWrapper>
-    )
-}
 
 const MainItems = styled.div`
     background: var(--alt-bg-color);
     display: block;
-    padding: 0;
     padding-bottom: 0px;
     list-style: none;
     text-align: center;
@@ -81,13 +67,10 @@ const MainItems = styled.div`
 const BottomItems = styled.div`
     background: var(--alt-bg-color);
     display: block;
-    padding: 0;
-    padding-bottom: 0px;
-    text-align: center;
-    margin: 0;
     padding-bottom: 20px;
-    padding-left: 5px;
-
+    list-style: none;
+    text-align: center;
+    padding-left: 7px;
 `
 const SideNav = styled.div`
     background: var(--alt-bg-color);

@@ -1,5 +1,5 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react"
+import styled from "styled-components"
 
 
 const Alt = styled.div`
@@ -20,8 +20,8 @@ const Default = styled.div`
 `
 
 const Wrapper = styled.div`
-    width: 60px;
-    height: 60px;
+    width: 100%;
+    height: 100%;
     &:hover ${Alt} {
         display:table-cell;
     }

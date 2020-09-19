@@ -1,4 +1,4 @@
-import _ from 'lodash'
+import _ from "lodash"
 
 const initialState = {
     current: 0,
@@ -9,14 +9,14 @@ const initialState = {
 
 const updateLocalStorage = (state) => {
     if (state.storageChecked) {
-        window.localStorage.setItem('windows', JSON.stringify(state))
+        window.localStorage.setItem("windows", JSON.stringify(state))
     }
 
 }
 
 const windowReducer = (state = initialState, action) => {
     switch (action.type) {
-    case 'ADD_WINDOW': {
+    case "ADD_WINDOW": {
         const newItem = action.data
 
         const identical = state.items.find(item => {
@@ -65,7 +65,7 @@ const windowReducer = (state = initialState, action) => {
         updateLocalStorage(newState)
         return newState
     }
-    case 'CLOSE_WINDOW': {
+    case "CLOSE_WINDOW": {
         const newState = {
             ...state,
             items: state.items.filter(item => item.id !== action.data)
@@ -74,7 +74,7 @@ const windowReducer = (state = initialState, action) => {
         updateLocalStorage(newState)
         return newState
     }
-    case 'UPDATE_WINDOW': {
+    case "UPDATE_WINDOW": {
         const newItem = action.data
         const newState = {
             ...state,
@@ -85,21 +85,21 @@ const windowReducer = (state = initialState, action) => {
 
         return newState
     }
-    case 'SET_CURRENT_WINDOW': {
+    case "SET_CURRENT_WINDOW": {
         const newState = {
             ...state,
             current: action.data,
         }
         return newState
     }
-    case 'RESET_CURRENT_WINDOW': {
+    case "RESET_CURRENT_WINDOW": {
         const newState = {
             ...state,
             current: null,
         }
         return newState
     }
-    case 'INIT_WINDOWS': {
+    case "INIT_WINDOWS": {
         const newState = {
             ...state,
             storageChecked: true
@@ -107,7 +107,7 @@ const windowReducer = (state = initialState, action) => {
 
         return newState
     }
-    case 'RESET_WINDOWS': {
+    case "RESET_WINDOWS": {
         return []
     }
     default: return state
@@ -116,21 +116,21 @@ const windowReducer = (state = initialState, action) => {
 
 /*TODO: fix router rendering new window before windows can be initialized */
 export const initWindows = () => {
-    const initialState = JSON.parse(window.localStorage.getItem('windows'))
+    const initialState = JSON.parse(window.localStorage.getItem("windows"))
 
     return dispatch => {
         if (initialState) {
             if (initialState.items) {
                 initialState.items.map(item => {
                     dispatch ({
-                        type: 'ADD_WINDOW',
+                        type: "ADD_WINDOW",
                         data: item
                     })
                 })
             }
         }
 
-        dispatch ({type: 'INIT_WINDOWS'})
+        dispatch ({type: "INIT_WINDOWS"})
     }
 }
 
@@ -145,7 +145,7 @@ export const addWindow = (type, initialState, x, y) => {
         minimized: false
     }
     return {
-        type: 'ADD_WINDOW',
+        type: "ADD_WINDOW",
         data: newWindow
     }
 }
@@ -157,7 +157,7 @@ export const updateWindowPosition = (item, x, y) => {
         y,
     }
     return {
-        type: 'UPDATE_WINDOW',
+        type: "UPDATE_WINDOW",
         data: newWindow
     }
 }
@@ -168,7 +168,7 @@ export const minimizeWindow = (item) => {
         minimized: true
     }
     return {
-        type: 'UPDATE_WINDOW',
+        type: "UPDATE_WINDOW",
         data: newWindow
     }
 }
@@ -181,12 +181,12 @@ export const maximizeWindow = (item) => {
 
     return dispatch => {
         dispatch ({
-            type: 'UPDATE_WINDOW',
+            type: "UPDATE_WINDOW",
             data: newWindow
         })
 
         dispatch ({
-            type: 'SET_CURRENT_WINDOW',
+            type: "SET_CURRENT_WINDOW",
             data: newWindow.id
         })
     }
@@ -195,7 +195,7 @@ export const maximizeWindow = (item) => {
 
 export const closeWindow = (id) => {
     return {
-        type: 'CLOSE_WINDOW',
+        type: "CLOSE_WINDOW",
         data: id
     }
 }
@@ -203,14 +203,14 @@ export const closeWindow = (id) => {
 export const selectWindow = (item) => {
 
     return {
-        type: 'SET_CURRENT_WINDOW',
+        type: "SET_CURRENT_WINDOW",
         data: item.id
     }
 }
 
 export const resetSelected = () => {
     return {
-        type: 'RESET_CURRENT_WINDOW',
+        type: "RESET_CURRENT_WINDOW",
     }
 }
 

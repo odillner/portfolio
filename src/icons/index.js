@@ -1,5 +1,5 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react"
+import styled from "styled-components"
 
 /* TODO: styled components && scaling */
 
@@ -21,13 +21,13 @@ const IconGenerator = ({type, active, dimensions, color}) => {
     }
     const Icon = icons[type]
 
-    let iconColor = "#9E9E9E"
+    let iconColor = "var(--main-icon-color)"
 
     if (color) {
         iconColor = color
     } else {
         if (active) {
-            iconColor = "#1abc9c"
+            iconColor = "var(--main-accent-color)"
         }
     }
 
@@ -35,15 +35,6 @@ const IconGenerator = ({type, active, dimensions, color}) => {
         <IconWrapper color={iconColor} viewBox="0 0 24 24" dimensions={dimensions}>
             <Icon/>
         </IconWrapper>
-    )
-}
-
-const Logo = () => {
-    return (
-        <>
-            <path stroke="none" d="M0 0h24v24H0z"/>
-            <path d="M18 9a5 5 0 0 0 -5 -5h-2a5 5 0 0 0 -5 5v6a5 5 0 0 0 5 5h2a5 5 0 0 0 5 -5v-6" />
-        </>
     )
 }
 
@@ -167,7 +158,6 @@ const Light = () => {
 }
 
 const icons = {
-    Logo,
     Home,
     GitHub,
     LinkedIn,
