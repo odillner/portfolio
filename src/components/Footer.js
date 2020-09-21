@@ -22,10 +22,25 @@ const Wrapper = styled.div`
 const MinimizedItem = styled.div`
     position: relative;
     width: 100px;
-    height: 80%;
+    height: 90%;
     z-index: 10;
-    background: black;
+    background: var(--main-bg-color);
     padding-left: 5px;
+    border: solid black 1px;
+`
+
+const TextWrapper = styled.div`
+    float: right;
+`
+const MinimizedItemText = styled.p`
+    color: black;
+    padding-right: 10px;
+    padding-top: 5px;
+`
+
+const IconWrapper = styled.div`
+    padding-top: 5px;
+    display: inline-block
 `
 
 
@@ -46,13 +61,16 @@ const Footer = () => {
                             key={window.id}
                             onClick={() => maximize(window)}
                         >
-                            <IconGenerator type={window.type} dimensions={25}></IconGenerator>
-                            {window.type}
+                            <IconWrapper>
+                                <IconGenerator type={window.type} dimensions={25}></IconGenerator>
+                            </IconWrapper>
+                            <TextWrapper>
+                                <MinimizedItemText>{window.type}</MinimizedItemText>
+                            </TextWrapper>
                         </MinimizedItem>
                     )
                 }
             })}
-            <ThemeButton/>
         </Wrapper>
     )
 }

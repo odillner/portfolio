@@ -7,6 +7,8 @@ const StyledButton = styled.button`
   height: 20;
   position: relative;
   right: 0;
+  background: var(--main-bg-color);
+  border: 2px solid var(--alt-bg-color);
 `
 
 export const CloseButton = ({click}) => {

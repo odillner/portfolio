@@ -70,7 +70,7 @@ const BottomItems = styled.div`
     padding-bottom: 20px;
     list-style: none;
     text-align: center;
-    padding-left: 7px;
+    padding-left: 10px;
 `
 const SideNav = styled.div`
     background: var(--alt-bg-color);

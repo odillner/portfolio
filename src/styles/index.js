@@ -19,6 +19,7 @@ const DarkTheme = createGlobalStyle`
         --main-bg-color: #222;
         --alt-bg-color: #181818;
         --main-accent-color: #1abc9c;
+        --alt-accent-color: purple;
         --main-icon-color: #9E9E9E;
         --main-text-color: black;
     }
