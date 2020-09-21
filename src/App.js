@@ -1,8 +1,8 @@
 import React, {useEffect} from "react"
 import {useDispatch, useSelector} from "react-redux"
 
-import Sidebar from "./components/Sidebar"
-import Footer from "./components/Footer"
+import Sidebar from "./components/Sidebar/Sidebar"
+import Footer from "./components/Footer/Footer"
 
 import {GlobalStyles, Themes} from "./styles/"
 import WindowRenderer from "./windows/WindowRenderer"
