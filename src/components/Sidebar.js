@@ -1,7 +1,7 @@
 import React, {useState} from "react"
 import {useSelector, useDispatch} from "react-redux"
 import styled from "styled-components"
-import {Link, useHistory, useLocation} from "react-router-dom"
+import {useHistory} from "react-router-dom"
 
 import {addWindow, closeWindow, maximizeWindow} from "../reducers/windows"
 
@@ -62,7 +62,7 @@ const MainItems = styled.div`
     list-style: none;
     text-align: center;
     padding-left: 5px;
-
+    cursor: pointer;
 `
 const BottomItems = styled.div`
     background: var(--alt-bg-color);
@@ -72,7 +72,7 @@ const BottomItems = styled.div`
     text-align: center;
     padding-left: 10px;
 `
-const SideNav = styled.div`
+const Wrapper = styled.div`
     background: var(--alt-bg-color);
     width: 60px;
     height: 100%;
@@ -87,7 +87,7 @@ const SideNav = styled.div`
 
 const Sidebar = () => {
     return (
-        <SideNav>
+        <Wrapper>
             <Logo/>
             <MainItems>
                 <PageNavItems type='Home'></PageNavItems>
@@ -99,7 +99,7 @@ const Sidebar = () => {
                 <ExternalNavItem type='LinkedIn' link='https://www.linkedin.com/in/ossiandillner/'></ExternalNavItem>
                 <ExternalNavItem type='GitHub' link='https://github.com/odillner/'></ExternalNavItem>
             </BottomItems>
-        </SideNav>
+        </Wrapper>
     )
 }
 

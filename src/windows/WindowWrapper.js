@@ -3,30 +3,32 @@ import Draggable from "react-draggable"
 import {useDispatch, useSelector} from "react-redux"
 import {useHistory} from "react-router-dom"
 import styled from "styled-components"
+import {Resizable, ResizableBox} from 'react-resizable';
 
 import {CloseButton, MinimizeButton} from "./WindowButtons"
 import {closeWindow, selectWindow, updateWindowPosition, minimizeWindow} from "../reducers/windows"
 import IconGenerator from "../icons"
 
 const Wrapper = styled.div`
-    width: 500px;
+    z-index: ${props => props.zIndex};
     height: 500px;
+    width: 500px;
     position: absolute;
     border: solid black 3px;
-    z-index: ${props => props.zIndex};
-    box-shadow: ${props => props.active ? "3px 3px 0 var(--main-icon-color)" : ""};
+    box-shadow: ${props => props.active ? "3px 3px 0 var(--main-accent-color)" : "3px 3px 0 var(--alt-accent-color)"};
 `
 const Header = styled.div`
     background: var(--alt-bg-color);
     border-bottom: solid black 2px;
     display: flex;
-    height: 6%;
+    height: 30px;
     justify-content: space-between;
     cursor: move;
 `
 
 const HeaderText = styled.p`
-    color: black;
+    color: ${props => props.active ? "var(--main-accent-color)" : "var(--main-icon-color)"};
+    letter-spacing: 1px;
 `
 const Content = styled.div`
     display: flex;
@@ -69,8 +71,7 @@ const StandardWindow = (props) => {
         dispatch(minimizeWindow(item))
     }
 
-    /* HORRIBLE FOR PERFOMANCE, SHITLOAD OF COMPONENTS ARE RERENDERED A BILLION TIMES FIXXXX PLEASE */
-    const drag = (e, position) => {
+    const updatePosition = (e, position) => {
         const {x, y} = position
         dispatch(updateWindowPosition(item, x, y))
     }
@@ -83,15 +84,15 @@ const StandardWindow = (props) => {
         <Draggable
             position={{x: item.x, y: item.y}}
             cancel='strong'
-            onMouseDown={() => select()}
-            onDrag={drag}
+            onStop={updatePosition}
+            onMouseDown={select}
         >
-            <Wrapper zIndex={getzIndex()} active={active}>
+            <Wrapper active={active} zIndex={getzIndex()} minimzed={item.minimized}>
                 <Header>
                     <IconWrapper>
                         <IconGenerator type={item.type} dimensions={25} active={active}/>
                     </IconWrapper>
-                    <HeaderText>{props.title}</HeaderText>
+                    <HeaderText active={active}>{props.title}</HeaderText>
                     <div>
                         <MinimizeButton click={minimize}/>
                         <CloseButton click={close}/>

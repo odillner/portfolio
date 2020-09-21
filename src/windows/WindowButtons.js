@@ -9,6 +9,11 @@ const StyledButton = styled.button`
   right: 0;
   background: var(--main-bg-color);
   border: 2px solid var(--alt-bg-color);
+
+  &:hover {
+    background: var(--main-accent-color);
+  }
+}
 `
 
 export const CloseButton = ({click}) => {

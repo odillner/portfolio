@@ -35,6 +35,8 @@ const windowReducer = (state = initialState, action) => {
                 /* if item has been created before localstorage has been checked replace it with item from localstorage*/
                 const newState = {
                     ...state,
+                    current: newItem.id,
+                    last: newItem.id,
                     items: state.items.map(item => (item.id === identical.id) ? newItem : item)
                 }
 
@@ -45,6 +47,8 @@ const windowReducer = (state = initialState, action) => {
 
                 const newState = {
                     ...state,
+                    current: newItem.id,
+                    last: newItem.id,
                     items: state.items.map(item => (item.id === identical.id) ? identical : item)
                 }
 

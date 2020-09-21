@@ -8,6 +8,7 @@ import {GlobalStyles, Themes} from "./styles/"
 import WindowRenderer from "./windows/WindowRenderer"
 import Routing from "./Routing"
 import {initWindows} from "./reducers/windows"
+import Background from "./components/Background";
 
 function App() {
     const dispatch = useDispatch()
@@ -28,6 +29,7 @@ function App() {
             <Sidebar/>
             <Footer/>
             <WindowRenderer/>
+            <Background/>
         </>
     )
 }
