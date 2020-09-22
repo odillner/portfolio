@@ -11,9 +11,9 @@ const updateLocalStorage = (state) => {
     if (state.storageChecked) {
         window.localStorage.setItem("windows", JSON.stringify(state))
     }
-
 }
 
+/* TODO: fix this mess */
 const windowReducer = (state = initialState, action) => {
     switch (action.type) {
     case "ADD_WINDOW": {
@@ -118,7 +118,6 @@ const windowReducer = (state = initialState, action) => {
     }
 }
 
-/*TODO: fix router rendering new window before windows can be initialized */
 export const initWindows = () => {
     const initialState = JSON.parse(window.localStorage.getItem("windows"))
 
