@@ -13,9 +13,17 @@ const IconWrapper = styled.svg`
     fill: none;
     stroke-linecap: round;
     stroke-linejoin: round;
+    transition: stroke 0.5s ease-out;
+    
+    ${props => (props.hover) ?
+        `
+        &:hover {
+            stroke:${props.hover};
+        }
+        ` : null}
 `
 
-const IconGenerator = ({type, active, dimensions, color}) => {
+const IconGenerator = ({type, active, dimensions, color, hover}) => {
     if (!type) {
         return null
     }
@@ -32,7 +40,7 @@ const IconGenerator = ({type, active, dimensions, color}) => {
     }
 
     return (
-        <IconWrapper color={iconColor} viewBox="0 0 24 24" dimensions={dimensions}>
+        <IconWrapper color={iconColor} hover={hover} viewBox="0 0 24 24" dimensions={dimensions}>
             <Icon/>
         </IconWrapper>
     )

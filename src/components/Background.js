@@ -9,7 +9,7 @@ const BackgroundWrapper = styled.svg`
 
 const Polygon = styled.polygon`
     opacity: 1;
-    -webkit-transition: fill 1.5s ease-out;
+    transition: fill 1.5s ease-out;
     fill: ${props => props.active ? 'var(--main-accent-color)' : 'var(--alt-accent-color)'};
 `
 

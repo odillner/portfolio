@@ -16,6 +16,7 @@ const Wrapper = styled.div`
     position: absolute;
     border: solid black 3px;
     box-shadow: ${props => props.active ? "3px 3px 0 var(--main-accent-color)" : "3px 3px 0 var(--alt-accent-color)"};
+    transition: box-shadow 0.5s ease-out;
 `
 const Header = styled.div`
     background: var(--alt-bg-color);
