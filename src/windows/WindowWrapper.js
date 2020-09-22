@@ -3,7 +3,7 @@ import Draggable from "react-draggable"
 import {useDispatch, useSelector} from "react-redux"
 import {useHistory} from "react-router-dom"
 import styled from "styled-components"
-import {Resizable, ResizableBox} from 'react-resizable';
+import {Resizable, ResizableBox} from "react-resizable"
 
 import {CloseButton, MinimizeButton} from "./WindowButtons"
 import {closeWindow, selectWindow, updateWindowPosition, minimizeWindow} from "../reducers/windows"
@@ -69,6 +69,7 @@ const StandardWindow = (props) => {
     }
 
     const minimize = () => {
+        history.push(`/${item.type}`)
         dispatch(minimizeWindow(item))
     }
 

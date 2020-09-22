@@ -2,26 +2,19 @@ import React from "react"
 import styled from "styled-components"
 
 import Logo from "../Logo"
-import {PageNavItem, ExternalNavItem} from "./SidebarItems";
+import PageNavItem from "./PageNavItem"
 
 
 const MainItems = styled.div`
     background: var(--alt-bg-color);
     display: block;
-    padding-bottom: 0px;
+    padding-bottom: 100px;
     list-style: none;
     text-align: center;
     padding-left: 5px;
     cursor: pointer;
 `
-const BottomItems = styled.div`
-    background: var(--alt-bg-color);
-    display: block;
-    padding-bottom: 20px;
-    list-style: none;
-    text-align: center;
-    padding-left: 10px;
-`
+
 const Wrapper = styled.div`
     background: var(--alt-bg-color);
     width: 60px;
@@ -45,10 +38,7 @@ const Sidebar = () => {
                 <PageNavItem type='Skills'/>
                 <PageNavItem type='Contact'/>
             </MainItems>
-            <BottomItems>
-                <ExternalNavItem type='LinkedIn' link='https://www.linkedin.com/in/ossiandillner/'/>
-                <ExternalNavItem type='GitHub' link='https://github.com/odillner/'/>
-            </BottomItems>
+            <div></div>
         </Wrapper>
     )
 }

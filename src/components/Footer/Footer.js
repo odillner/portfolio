@@ -5,18 +5,30 @@ import ToggleButton from "react-bootstrap/ToggleButton"
 import {useHistory} from "react-router-dom"
 
 import {closeWindow, maximizeWindow} from "../../reducers/windows"
-import MinimizedItem from "./MinimizedItem";
+import MinimizedItem from "./MinimizedItem"
+import ExternalNavItem from "./ExternalNavItem";
 
 const Wrapper = styled.div`
     position: fixed;
     bottom: 0;
-    left 60px;
+    left 0;
     width: 100%;
-    height: 45px;
+    height: 60px;
     z-index: 10;
     background: var(--alt-bg-color);
     display: flex;
-    
+    justify-content: space-between;
+`
+const MinimizedItems = styled.div`
+    text-align: center;
+    display: flex;
+    padding-left: 20px;
+`
+
+const SideItems = styled.div`
+    text-align: center;
+    display: flex;
+    padding-right: 20px;
 `
 
 const Footer = () => {
@@ -31,18 +43,24 @@ const Footer = () => {
 
     return(
         <Wrapper>
-            {windows.map(window => {
-                if (window.minimized) {
-                    return (
-                        <MinimizedItem
-                            window={window}
-                            key={window.id}
-                            maximize={() => maximize(window)}
-                        >
-                        </MinimizedItem>
-                    )
-                }
-            })}
+            <MinimizedItems>
+                {windows.map(window => {
+                    if (window.minimized) {
+                        return (
+                            <MinimizedItem
+                                window={window}
+                                key={window.id}
+                                maximize={() => maximize(window)}
+                            >
+                            </MinimizedItem>
+                        )
+                    }
+                })}
+            </MinimizedItems>
+            <SideItems>
+                <ExternalNavItem type='LinkedIn' link='https://www.linkedin.com/in/ossiandillner/'/>
+                <ExternalNavItem type='GitHub' link='https://github.com/odillner/'/>
+            </SideItems>
         </Wrapper>
     )
 }

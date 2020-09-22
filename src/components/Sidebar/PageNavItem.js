@@ -5,17 +5,24 @@ import {useHistory} from "react-router-dom"
 import {addWindow, closeWindow, maximizeWindow} from "../../reducers/windows"
 
 import IconGenerator from "../../icons"
-import Hoverable from "../Hoverable"
 
-export const PageNavItem = ({type}) => {
+const PageNavItem = ({type}) => {
     const item = useSelector(state => state.windows.items).find(item => item.type === type)
     const dispatch = useDispatch()
     const history = useHistory()
 
     const path = `/${type}`
 
-    const isActive = () => {
-        return !!(item)
+    const getIconColor = () => {
+        if (item) {
+            if (item.minimized) {
+                return "var(--alt-accent-color)"
+            } else {
+                return "var(--main-accent-color)"
+            }
+        } else {
+            return "var(--main-icon-color)"
+        }
     }
 
     const onClick = () => {
@@ -32,23 +39,13 @@ export const PageNavItem = ({type}) => {
             dispatch(addWindow(type))
         }
     }
+
+
     return (
         <div onClick={() => onClick()}>
-            <Hoverable alt={<IconGenerator type={type} active dimensions={50}/>}>
-                <IconGenerator type={type} dimensions={50} active={isActive()}/>
-            </Hoverable>
+            <IconGenerator type={type} dimensions={50} color={getIconColor()} hover={"var(--main-accent-color)"}/>
         </div>
     )
 }
 
-export const ExternalNavItem = ({type, link}) => {
-    return (
-        <div>
-            <a href={link}>
-                <Hoverable alt={<IconGenerator type={type} color={"var(--alt-accent-color)"} dimensions={40}/>}>
-                    <IconGenerator type={type} dimensions={40}/>
-                </Hoverable>
-            </a>
-        </div>
-    )
-}
+export default PageNavItem

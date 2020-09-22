@@ -10,6 +10,7 @@ const ItemText = styled.p`
     color: var(--main-icon-color);
     padding-right: 10px;
     padding-top: 5px;
+    transition: color 0.5s ease-out;
 `
 
 const IconWrapper = styled.div`
@@ -25,13 +26,13 @@ const HoverIconWrapper = styled.div`
 const ItemWrapper = styled.div`
     position: relative;
     width: 100px;
-    height: 80%;
+    height: 38px;
     z-index: 10;
     background: var(--main-bg-color);
     padding-left: 5px;
     margin-top: 3px;
     margin-right: 3px;
-
+    transition: border 0.5s ease-out;
     border: solid var(--alt-bg-color) 1px;
     cursor: pointer;
 
