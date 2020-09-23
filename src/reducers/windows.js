@@ -143,7 +143,7 @@ export const addWindow = (type, initialState, x, y) => {
         type,
         initialState,
         x: (x) ? x : 100,
-        y: (y) ? y : 50,
+        y: (y) ? y : 100,
         id: Math.floor(Math.random()*10000),
         minimized: false
     }
