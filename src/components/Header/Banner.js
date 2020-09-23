@@ -1,6 +1,9 @@
 import React, {useEffect, useState} from "react"
 import styled from "styled-components"
 
+
+/* TODO: PLEASE DO NOT LOOK AT ANY OF THIS CODE */
+
 const StyledPath = styled.path`
     stroke-width: 1px;
     fill: ${props => props.active ? "var(--main-accent-color)" : "var(--alt-accent-color)"};

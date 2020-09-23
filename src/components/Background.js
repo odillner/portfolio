@@ -46,10 +46,10 @@ const Background = () => {
 
     return (
         <div>
-            <BackgroundWrapper id="" preserveAspectRatio="xMidYMax meet" viewBox="0 0 1600 200" data-height="200">
+            <BackgroundWrapper preserveAspectRatio="xMidYMax meet" viewBox="0 0 1600 200" data-height="200">
                 <polygon style={{fill: "var(--alt-bg-color)"}} points="1488,134 1304,100 1068,152 909.935,92.044 672,198 364,142 242,32 -4,95 -4,204 1604,204 1604,0 "/>
             </BackgroundWrapper>
-            <PolygonWrapper id="" preserveAspectRatio="xMidYMax meet" viewBox="0 0 1600 200" data-height="200">
+            <PolygonWrapper preserveAspectRatio="xMidYMax meet" viewBox="0 0 1600 200" data-height="200">
                 <Polygon active={polygons[0]} points={"672,198 364,142 242,32 -4,95 -4,82.333 242,32 374,136"}/>
                 <Polygon active={polygons[1]} points={"894,86 672,198 909.935,92.044"}/>
                 <Polygon active={polygons[2]} points={"1068,152 1302,86 1486,126 1604,0 1488,134 1304,100"}/>
