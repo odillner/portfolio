@@ -9,6 +9,8 @@ import WindowRenderer from "./windows/WindowRenderer"
 import Routing from "./Routing"
 import {initWindows} from "./reducers/windows"
 import Background from "./components/Background"
+import RightSidebar from "./components/Sidebar/RightSideBar"
+import Header from "./components/Header/Header"
 
 function App() {
     const dispatch = useDispatch()
@@ -25,10 +27,12 @@ function App() {
             <CurrentTheme/>
             <GlobalStyles/>
 
+            <WindowRenderer/>
             <Routing/>
+
+            <Header/>
             <Sidebar/>
             <Footer/>
-            <WindowRenderer/>
             <Background/>
         </>
     )

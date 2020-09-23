@@ -15,7 +15,7 @@ const Wrapper = styled.div`
     width: 500px;
     position: absolute;
     border: solid black 3px;
-    box-shadow: ${props => props.active ? "3px 3px 0 var(--main-accent-color)" : "3px 3px 0 var(--alt-accent-color)"};
+    box-shadow: 3px 3px 0 ${props => props.active ? "var(--main-accent-color)" : "var(--alt-accent-color)"};
     transition: box-shadow 0.5s ease-out;
 `
 const Header = styled.div`
@@ -28,8 +28,9 @@ const Header = styled.div`
 `
 
 const HeaderText = styled.p`
-    color: ${props => props.active ? "var(--main-accent-color)" : "var(--main-icon-color)"};
+    color: ${props => props.color};
     letter-spacing: 1px;
+    transition: box-shadow 0.5s ease-out;
 `
 const Content = styled.div`
     display: flex;
@@ -69,7 +70,7 @@ const StandardWindow = (props) => {
     }
 
     const minimize = () => {
-        history.push(`/${item.type}`)
+        history.push("/")
         dispatch(minimizeWindow(item))
     }
 
@@ -82,6 +83,14 @@ const StandardWindow = (props) => {
         return null
     }
 
+    const getAccentColor = () => {
+        if (active) {
+            return "var(--main-accent-color)"
+        } else {
+            return "var(--alt-accent-color)"
+        }
+    }
+
     return (
         <Draggable
             position={{x: item.x, y: item.y}}
@@ -92,12 +101,12 @@ const StandardWindow = (props) => {
             <Wrapper active={active} zIndex={getzIndex()} minimzed={item.minimized}>
                 <Header>
                     <IconWrapper>
-                        <IconGenerator type={item.type} dimensions={25} active={active}/>
+                        <IconGenerator type={item.type} dimensions={25} color={getAccentColor()}/>
                     </IconWrapper>
-                    <HeaderText active={active}>{props.title}</HeaderText>
+                    <HeaderText color={getAccentColor()}>{props.title}</HeaderText>
                     <div>
-                        <MinimizeButton click={minimize}/>
-                        <CloseButton click={close}/>
+                        <MinimizeButton click={minimize} active={active}/>
+                        <CloseButton click={close} active={active}/>
                     </div>
                 </Header>
                 <strong className="no-cursor">

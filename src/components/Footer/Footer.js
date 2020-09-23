@@ -6,7 +6,7 @@ import {useHistory} from "react-router-dom"
 
 import {closeWindow, maximizeWindow} from "../../reducers/windows"
 import MinimizedItem from "./MinimizedItem"
-import ExternalNavItem from "./ExternalNavItem";
+import ExternalNavItem from "./ExternalNavItem"
 
 const Wrapper = styled.div`
     position: fixed;
@@ -29,7 +29,16 @@ const SideItems = styled.div`
     text-align: center;
     display: flex;
     padding-right: 20px;
+    padding-top: 10px;
 `
+
+const SideItemText = styled.p`
+    color: var(--main-icon-color);
+    padding-top: 8px;
+    padding-right: 7px;
+    letter-spacing: 1px;
+`
+
 
 const Footer = () => {
     const windows = useSelector(state => state.windows.items)
@@ -58,6 +67,7 @@ const Footer = () => {
                 })}
             </MinimizedItems>
             <SideItems>
+                <SideItemText>Find out more:</SideItemText>
                 <ExternalNavItem type='LinkedIn' link='https://www.linkedin.com/in/ossiandillner/'/>
                 <ExternalNavItem type='GitHub' link='https://github.com/odillner/'/>
             </SideItems>

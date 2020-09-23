@@ -5,31 +5,37 @@ import IconGenerator from "../../icons"
 
 const TextWrapper = styled.div`
     float: right;
+    text-align: center;
+    padding-left: 20px;
 `
 const ItemText = styled.p`
     color: var(--main-icon-color);
-    padding-right: 10px;
     padding-top: 5px;
     transition: color 0.5s ease-out;
+    letter-spacing: 1px;
 `
 
 const IconWrapper = styled.div`
-    padding-top: 5px;
     display: inline-block
 `
 
 const HoverIconWrapper = styled.div`
-    padding-top: 5px;
     display: none;
 `
 
+const Icons = styled.div`
+    padding-top: 5px;
+    padding-left: 5px;
+    width: 20px
+`
+
 const ItemWrapper = styled.div`
+    display: flex;
     position: relative;
-    width: 100px;
+    width: 120px;
     height: 38px;
     z-index: 10;
     background: var(--main-bg-color);
-    padding-left: 5px;
     margin-top: 3px;
     margin-right: 3px;
     transition: border 0.5s ease-out;
@@ -56,12 +62,14 @@ const ItemWrapper = styled.div`
 const MinimizedItem = ({window, maximize}) => {
     return(
         <ItemWrapper onClick={maximize}>
-            <IconWrapper>
-                <IconGenerator type={window.type} dimensions={25}/>
-            </IconWrapper>
-            <HoverIconWrapper>
-                <IconGenerator type={window.type} dimensions={25} active/>
-            </HoverIconWrapper>
+            <Icons>
+                <IconWrapper>
+                    <IconGenerator type={window.type} dimensions={25}/>
+                </IconWrapper>
+                <HoverIconWrapper>
+                    <IconGenerator type={window.type} dimensions={25} active/>
+                </HoverIconWrapper>
+            </Icons>
             <TextWrapper>
                 <ItemText>{window.type}</ItemText>
             </TextWrapper>

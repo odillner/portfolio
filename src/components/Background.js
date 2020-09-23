@@ -3,14 +3,14 @@ import styled from "styled-components"
 
 const BackgroundWrapper = styled.svg`
     display: block;
-    position: absolute;
+    position: fixed;
     bottom: 60px;
     min-width: 1000px;
 `
 
 const PolygonWrapper = styled.svg`
     display: block;
-    position: absolute;
+    position: fixed;
     bottom: 60px;
     z-index: 5;
     min-width: 1000px;

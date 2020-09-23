@@ -1,17 +1,22 @@
 import {createGlobalStyle} from "styled-components"
 
 export const GlobalStyles = createGlobalStyle`
-  * {
-    scrollbar-width: none;
-    box-sizing: border-box;
-    font-family: sans-serif;
-    font-color: white;
-  }
+    @font-face {
+        font-family: Quicksand;
+        src: local('Quicksand'), local('Quicksand'),
+           url('../fonts/Quicksand-Regular.ttf') format('truetype'),
+        }
+    }
+    
+    * {
+        scrollbar-width: none;
+        box-sizing: border-box;
+    }
 
-  body {
+    body {
     margin: 0;
     background-color: var(--main-bg-color);
-  }
+    }
  
 `
 
@@ -19,8 +24,8 @@ const DarkTheme = createGlobalStyle`
     * {
         --main-bg-color: #222;
         --alt-bg-color: #181818;
-        --main-accent-color: #1abc9c;
-        --alt-accent-color: purple;
+        --main-accent-color: #48D1CC;
+        --alt-accent-color: #800080;
         --main-icon-color: #9E9E9E;
         --main-text-color: black;
     }

@@ -12,21 +12,21 @@ const StyledButton = styled.button`
   transition: background 0.5s ease-out;
 
   &:hover {
-    background: var(--main-accent-color);
+    background: ${props => (props.active) ? "var(--main-accent-color)" : "var(--alt-accent-color)"};
   }
 `
 
-export const CloseButton = ({click}) => {
+export const CloseButton = ({click, active}) => {
     return (
-        <StyledButton onClick={click}>
+        <StyledButton onClick={click} active={active}>
             <IconGenerator type="Close" dimensions={20} color="black"/>
         </StyledButton>
     )
 }
 
-export const MinimizeButton = ({click}) => {
+export const MinimizeButton = ({click, active}) => {
     return (
-        <StyledButton onClick={click}>
+        <StyledButton onClick={click} active={active}>
             <IconGenerator type="Minimize" dimensions={20} color="black"/>
         </StyledButton>
     )

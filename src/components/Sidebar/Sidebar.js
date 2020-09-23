@@ -8,11 +8,9 @@ import PageNavItem from "./PageNavItem"
 const MainItems = styled.div`
     background: var(--alt-bg-color);
     display: block;
-    padding-bottom: 100px;
     list-style: none;
     text-align: center;
-    padding-left: 5px;
-    cursor: pointer;
+    padding-top: 100px;
 `
 
 const Wrapper = styled.div`
@@ -23,7 +21,6 @@ const Wrapper = styled.div`
     top: 0;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     z-index: 3;
     min-height: 500px;
 `

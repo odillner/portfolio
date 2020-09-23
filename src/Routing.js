@@ -8,7 +8,8 @@ const routes = [
     "About",
     "Contact",
     "Home",
-    "Skills"
+    "Skills",
+    ""
 ]
 
 const Routing = () => {
@@ -19,11 +20,17 @@ const Routing = () => {
 
         const Component = () => {
             useEffect(() => {
-                dispatch(addWindow(route))
+                if (route) {
+                    dispatch(addWindow(route))
+                    document.title = `Ossian Dillner | ${route}`
+                } else {
+                    document.title = "Ossian Dillner | Web Developer"
+                }
             }, [])
 
             return null
         }
+
         return (
             <Route key={route} path={path}>
                 <Component/>

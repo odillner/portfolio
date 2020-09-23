@@ -1,11 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 
-/* TODO: styled components && scaling */
-
-
 const IconWrapper = styled.svg`
-    xmlns="http://www.w3.org/2000/svg";
     width: ${props => props.dimensions}px;
     height: ${props => props.dimensions}px;
     stroke-width: 1;
