@@ -7,7 +7,7 @@ import Banner from "./Banner"
 const RightSideBanner = styled.svg`
     position: fixed;
     z-index: 5;
-    height: 90px;
+    height: 300px;
     right: 0;
 `
 
@@ -28,7 +28,7 @@ const Wrapper = styled.div`
     background: var(--alt-bg-color);
     display: flex;
     
-    @media only screen and (max-width: 700px) { 
+    @media only screen and (max-width: 800px) { 
       ${LeftSideBanner} { 
         display: none; 
       } 
@@ -41,7 +41,7 @@ const Header = () => {
             <LeftSideBanner  viewBox="-620 50 1600 200" data-height="200">
                 <Banner/>
             </LeftSideBanner>
-            <RightSideBanner  viewBox="-750 50 1600 200" data-height="200">
+            <RightSideBanner  viewBox="-750 50 1600 600" data-height="200">
                 <Banner/>
             </RightSideBanner>
         </Wrapper>
