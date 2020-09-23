@@ -1,11 +1,8 @@
 import React from "react"
 
-import StandardWindow from "../StandardWindow"
-
-const Contact = ({id}) => {
+const Contact = () => {
     return (
-        <StandardWindow title='Contact' id={id}>
-        </StandardWindow>
+        <p>Hello and welcome to my portfolio!</p>
     )
 }
 

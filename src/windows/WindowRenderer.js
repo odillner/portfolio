@@ -3,6 +3,7 @@ import {useSelector} from "react-redux"
 
 import windowTypes from "./types/"
 import styled from "styled-components"
+import StandardWindow from "./StandardWindow";
 
 
 
@@ -21,11 +22,11 @@ function WindowRenderer() {
                 const Component = windowTypes[item.type]
 
                 return (
-                    <Component
-                        key={item.id}
-                        initialState={item.initialState}
-                        id={item.id}
-                    />
+                    <StandardWindow id={item.id} key={item.id}>
+                        <Component
+                            initialState={item.initialState}
+                        />
+                    </StandardWindow>
                 )
             })}
         </Wrapper>

@@ -103,7 +103,7 @@ const StandardWindow = (props) => {
                     <IconWrapper>
                         <IconGenerator type={item.type} dimensions={25} color={getAccentColor()}/>
                     </IconWrapper>
-                    <HeaderText color={getAccentColor()}>{props.title}</HeaderText>
+                    <HeaderText color={getAccentColor()}>{item.type}</HeaderText>
                     <div>
                         <MinimizeButton click={minimize} active={active}/>
                         <CloseButton click={close} active={active}/>

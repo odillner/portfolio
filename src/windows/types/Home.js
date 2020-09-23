@@ -1,11 +1,8 @@
 import React from "react"
 
-import StandardWindow from "../StandardWindow"
-
-const Home = ({id}) => {
+const Home = () => {
     return (
-        <StandardWindow title='Home' id={id}>
-        </StandardWindow>
+        <p>Hello and welcome to my portfolio!</p>
     )
 }
 
