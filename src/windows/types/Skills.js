@@ -1,8 +1,14 @@
 import React from "react"
+import styled from "styled-components";
+
+const ContentText = styled.p`
+    color: white;
+    font-weight: normal;
+`
 
 const Skills = () => {
     return (
-        <p>Hello and welcome to my portfolio!</p>
+        <ContentText>Hello and welcome to my portfolio!</ContentText>
     )
 }
 

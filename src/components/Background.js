@@ -1,13 +1,6 @@
 import React, {useEffect, useState} from "react"
 import styled from "styled-components"
 
-const BackgroundWrapper = styled.svg`
-    display: block;
-    position: fixed;
-    bottom: 60px;
-    min-width: 1000px;
-`
-
 const PolygonWrapper = styled.svg`
     display: block;
     position: fixed;
@@ -22,18 +15,25 @@ const Polygon = styled.polygon`
     fill: ${props => props.active ? "var(--main-accent-color)" : "var(--alt-accent-color)"};
 `
 
+const BackgroundWrapper = styled.svg`
+    display: block;
+    position: fixed;
+    bottom: 60px;
+    min-width: 1000px;
+`
+
 const Background = () => {
     const [polygons, setPolygons] = useState([true, true, true])
     const [count, setCount] = useState(0)
 
     const animatePolygons = () => {
-        const newPolygons = Array(3)
-        for (let i=0;i<3;i++) {
+        const newPolygons = Array(polygons.length)
+        for (let i=0;i<polygons.length;i++) {
             newPolygons[i] = (i===count) ? !polygons[i] : polygons[i]
         }
 
         setPolygons(newPolygons)
-        setCount((count === 2) ? 0 : count + 1)
+        setCount((count === polygons.length) ? 0 : count + 1)
     }
 
     useEffect(() => {
