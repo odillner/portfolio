@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from "react"
+import React from "react"
 import styled from "styled-components"
 
-import Banner, {BackgroundBanner} from "./Banner"
+import Banner from "./Banner"
 
 
 const RightSideWrapper = styled.svg`

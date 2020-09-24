@@ -3,7 +3,7 @@ import {useSelector} from "react-redux"
 
 import windowTypes from "./types/"
 import styled from "styled-components"
-import StandardWindow from "./StandardWindow";
+import StandardWindow from "./StandardWindow"
 
 
 
