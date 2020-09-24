@@ -1,4 +1,6 @@
+import React from "react"
 import {createGlobalStyle} from "styled-components"
+import {useSelector} from "react-redux"
 
 const DarkTheme = [
     {
@@ -11,7 +13,7 @@ const DarkTheme = [
     },
     {
         name: "--main-accent-color",
-        value: "#48D1CC"
+        value: "orange"
     },
     {
         name: "--alt-accent-color",
@@ -69,7 +71,7 @@ const CustomTheme = [
     }
 ]
 
-const themeToComponent = (theme) => {
+export const themeToComponent = (theme) => {
     return createGlobalStyle`
     * {
     ${theme.map(item => {
@@ -79,10 +81,20 @@ const themeToComponent = (theme) => {
     `
 }
 
+export const CurrentTheme = () => {
+    const theme = useSelector(state => state.theme)
+
+    const Component = themeToComponent(theme)
+
+    return (
+        <Component/>
+    )
+}
+
 const Themes = [
-    {key: 0, obj: DarkTheme, component: themeToComponent(DarkTheme), name: "Dark Theme"},
-    {key: 1, obj: LightTheme, component: themeToComponent(LightTheme), name: "Light Theme"},
-    {key: 2, obj: CustomTheme, component: themeToComponent(LightTheme), name: "Custom Theme"},
+    {key: 0, obj: DarkTheme, name: "Dark Theme"},
+    {key: 1, obj: LightTheme, name: "Light Theme"},
+    {key: 2, obj: CustomTheme, name: "Custom Theme"},
 ]
 
 export default Themes

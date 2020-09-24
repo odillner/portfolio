@@ -5,23 +5,20 @@ import Sidebar from "./components/Sidebar/Sidebar"
 import Footer from "./components/Footer/Footer"
 
 import GlobalStyles from "./styles/"
-import Themes from "./styles/themes"
 import WindowRenderer from "./windows/WindowRenderer"
 import Routing from "./Routing"
 import {initWindows} from "./reducers/windows"
 import Background from "./components/Background"
 import Header from "./components/Header/Header"
-import ThemeWrapper from "./components/ThemeWrapper"
+import ThemeCustomizer from "./components/ThemeCustomizer"
+import {CurrentTheme} from "./styles/themes"
 
 function App() {
     const dispatch = useDispatch()
-    const theme = useSelector(state => state.theme)
 
     useEffect(() => {
         dispatch(initWindows())
     }, [])
-
-    const CurrentTheme = Themes[theme].component
 
     return (
         <>
@@ -30,10 +27,9 @@ function App() {
 
             <WindowRenderer/>
             <Routing/>
-
+            <ThemeCustomizer/>
             <Header/>
             <Sidebar/>
-            <ThemeWrapper/>
             <Footer/>
             <Background/>
         </>

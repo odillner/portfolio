@@ -161,6 +161,24 @@ const Light = () => {
     )
 }
 
+const Left = () => {
+    return (
+        <>
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <polyline points="15 6 9 12 15 18"/>
+        </>
+    )
+}
+
+const Right = () => {
+    return (
+        <>
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <polyline points="9 6 15 12 9 18"/>
+        </>
+    )
+}
+
 const icons = {
     Home,
     GitHub,
@@ -171,7 +189,9 @@ const icons = {
     Minimize,
     Close,
     Dark,
-    Light
+    Light,
+    Left,
+    Right
 }
 
 export default IconGenerator

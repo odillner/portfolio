@@ -37,23 +37,13 @@ const LogoElement = styled.svg`
     transition: stroke 1.5s ease-out;
 `
 const SVGLogo = () => {
-    const [state, setState] = useState(true)
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setState(!state)
-        }, 2000)
-
-        return () => clearInterval(interval)
-    },[state])
-
     return (
         <svg height="50" width="50">
-            <LogoElement width="52" height="52" active={!state} viewBox="0 0 24 24">
+            <LogoElement dimensions={55} active={false} viewBox="-2 0 24 24">
                 <path stroke="none" d="M0 0h24v24H0z"/>
                 <path d="M18 9a5 5 0 0 0 -5 -5h-2a5 5 0 0 0 -5 5v6a5 5 0 0 0 5 5h2a5 5 0 0 0 5 -5v-6"/>
             </LogoElement>
-            <LogoElement dimensions={55} active={state} viewBox="0 0 24 24">
+            <LogoElement dimensions={55} active={true} viewBox="0 0 24 24">
                 <path stroke="none" d="M0 0h24v24H0z"/>
                 <path d="M18 9a5 5 0 0 0 -5 -5h-2a5 5 0 0 0 -5 5v6a5 5 0 0 0 5 5h2a5 5 0 0 0 5 -5v-6"/>
             </LogoElement>

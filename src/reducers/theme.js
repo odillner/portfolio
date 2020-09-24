@@ -1,16 +1,25 @@
-const themeReducer = (state = 0, action) => {
+import Themes from "../styles/themes"
+
+const initialState = Themes[0].obj
+
+const themeReducer = (state = initialState, action) => {
     switch (action.type) {
-    case "CHANGE_THEME": {
-        return action.data
+    case "UPDATE_THEME": {
+        const newItem = action.data
+        return state.map(item => (item.name === newItem.name) ? newItem : item)
     }
     default: return state
     }
 }
 
-export const changeTheme = (themeID) => {
+export const updateTheme = (name, newValue) => {
+    const newItem = {
+        name: name,
+        value: newValue
+    }
     return {
-        type: "CHANGE_THEME",
-        data: themeID
+        type: "UPDATE_THEME",
+        data: newItem
     }
 }
 

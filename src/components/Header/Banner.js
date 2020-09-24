@@ -1,56 +1,27 @@
-import React, {useEffect, useState} from "react"
+import React from "react"
 import styled from "styled-components"
 import BannerBackground from "./BannerBackground"
 
-/* TODO: PLEASE DO NOT LOOK AT ANY OF THIS CODE */
 
-/*TODO CREATE TWO DIFFERENT KEYFRAME ANIMATIONS */
 
 const StyledPath = styled.path`
     stroke-width: 1px;
-    animation: color 5s infinite;
-    fill: ${props => (props.defaultColor)};
-
-    @keyframes color {
-        0% {
-            fill: ${props => (props.defaultColor)};
-        }
-        50% {
-            fill: ${props => (props.altColor)};
-        }
-        100 {
-            fill: ${props => (props.defaultColor)};
-        }
-    }
+    animation: banner${props => (props.initialState) ? "0" : "1"} 2s infinite;
+    animation-delay: ${props => props.initialDelay}ms;
+    fill: ${props => (props.initialState) ? "var(--main-accent-color)" : "var(--alt-accent-color)"};
 `
 
-const interval = 30
-
-let rerenders = 0;
-
-const logrender = (index) => {
-    rerenders++
-
-    if (rerenders % 100 === 0)
-        console.log("renders:", rerenders)
-}
-
 const AnimatedPath = ({initialState, d, index}) => {
-    const defaultColor = (initialState) ? "var(--main-accent-color)" : "var(--alt-accent-color)"
-    const altColor = (initialState) ? "var(--alt-accent-color)" : "var(--main-accent-color)"
-
-    logrender()
     return (
         <StyledPath
             d={d}
-            defaultColor={defaultColor}
-            altColor={altColor}
+            initialState={initialState}
+            initialDelay={index*30}
         />
     )
 }
 
 const Banner = () => {
-    console.log("rerendered")
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
