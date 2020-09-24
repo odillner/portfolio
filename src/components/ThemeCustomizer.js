@@ -1,7 +1,7 @@
 import React, {useState} from "react"
 import {useSelector, useDispatch} from "react-redux"
 import styled from "styled-components"
-import {CompactPicker} from "react-color"
+import {CompactPicker, PhotoshopPicker} from "react-color"
 
 import IconGenerator from "../icons"
 import {updateTheme} from "../reducers/theme"
@@ -116,11 +116,22 @@ const PickerWrapper = styled.div`
     padding-top: 25px;
 `
 
-const StyledPicker = styled(CompactPicker)`
+const StyledPicker = styled(PhotoshopPicker)`
     background: var(--alt-bg-color);
     padding-right: 1px;
 `
-
+/*
+const ColorPicker = ({item, onChange}) => {
+    return (
+        <PickerWrapper>
+            <StyledPicker
+                color={item.value}
+                onChange={onChange}
+            />
+        </PickerWrapper>
+    )
+}
+*/
 const ColorPicker = ({item, onChange}) => {
     return (
         <PickerWrapper>

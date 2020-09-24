@@ -6,7 +6,7 @@ import BannerBackground from "./BannerBackground"
 
 const StyledPath = styled.path`
     stroke-width: 1px;
-    animation: banner${props => (props.initialState) ? "0" : "1"} 2s infinite;
+    animation: banner${props => (props.initialState) ? "0" : "1"} 4s infinite;
     animation-delay: ${props => props.initialDelay}ms;
     fill: ${props => (props.initialState) ? "var(--main-accent-color)" : "var(--alt-accent-color)"};
 `
@@ -16,7 +16,7 @@ const AnimatedPath = ({initialState, d, index}) => {
         <StyledPath
             d={d}
             initialState={initialState}
-            initialDelay={index*30}
+            initialDelay={index*40}
         />
     )
 }
