@@ -35,7 +35,6 @@ const Routing = () => {
             <Route key={route} path={path}>
                 <Component/>
             </Route>
-
         )
     }
 

@@ -1,4 +1,4 @@
-import {createGlobalStyle} from "styled-components";
+import {createGlobalStyle} from "styled-components"
 
 const DarkTheme = [
     {
@@ -26,19 +26,19 @@ const DarkTheme = [
 const LightTheme = [
     {
         name: "--main-bg-color",
-        value: "#222"
+        value: "white"
     },
     {
         name: "--alt-bg-color",
-        value: "#181818"
+        value: "grey"
     },
     {
         name: "--main-accent-color",
-        value: "#48D1CC"
+        value: "green"
     },
     {
         name: "--alt-accent-color",
-        value: "#800080"
+        value: "red"
     },
     {
         name: "--main-icon-color",
