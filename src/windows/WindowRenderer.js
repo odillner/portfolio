@@ -1,11 +1,9 @@
 import React from "react"
 import {useSelector} from "react-redux"
+import styled from "styled-components"
 
 import windowTypes from "./types/"
-import styled from "styled-components"
-import StandardWindow from "./StandardWindow"
-
-
+import StandardWindow from "./component/StandardWindow"
 
 const Wrapper = styled.div`
     position: relative;

@@ -24,6 +24,7 @@ const LeftSideWrapper = styled.svg`
     height: 90px;
     transform: scaleX(-1);
 `
+
 const SecondLeftSideWrapper = styled.svg`
     position: fixed;
     z-index: 5;

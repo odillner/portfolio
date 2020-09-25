@@ -3,47 +3,37 @@ import Draggable from "react-draggable"
 import {useDispatch, useSelector} from "react-redux"
 import {useHistory} from "react-router-dom"
 import styled from "styled-components"
-import {Resizable, ResizableBox} from "react-resizable"
 
-import {CloseButton, MinimizeButton} from "./WindowButtons"
-import {closeWindow, selectWindow, updateWindowPosition, minimizeWindow} from "../reducers/windows"
-import IconGenerator from "../icons"
+import {closeWindow, selectWindow, updateWindowPosition, minimizeWindow} from "../../reducers/windows"
+import WindowHeader from "./WindowHeader"
+import Banner from "../../components/Header/Banner"
 
 const Wrapper = styled.div`
     z-index: ${props => props.zIndex};
     height: 500px;
-    width: 500px;
+    width: 700px;
     position: absolute;
-    border: solid black 3px;
+    border: solid black 1px;
     box-shadow: 3px 3px 0 ${props => props.active ? "var(--main-accent-color)" : "var(--alt-accent-color)"};
     transition: box-shadow 0.5s ease-out;
 `
-const Header = styled.div`
-    background: var(--alt-bg-color);
-    border-bottom: solid black 2px;
-    display: flex;
-    height: 30px;
-    justify-content: space-between;
-    cursor: move;
-`
 
-const HeaderText = styled.p`
-    color: ${props => props.color};
-    letter-spacing: 1px;
-    transition: box-shadow 0.5s ease-out;
-`
 const Content = styled.div`
     display: flex;
     width: 100%;
-    height: 94%;
+    height: 448px;
     background: var(--main-bg-color);
-    border: solid var(--alt-bg-color) 3px;
 `
-const IconWrapper = styled.div`
-    padding-top: 1px;
-    padding-left: 3px;
-    display: inline-block
+
+const BottomRightWrapper = styled.svg`
+    position: fixed;
+    z-index: 0;
+    height: 120px;
+    right: 0;
+    bottom: -1px;
+    transform: rotateX(180deg); 
 `
+
 const StandardWindow = (props) => {
     /* tie the different states together ffs, create hook? */
     const id = props.id
@@ -52,6 +42,7 @@ const StandardWindow = (props) => {
     const dispatch = useDispatch()
     const history = useHistory()
     const active = (current === id)
+
     const close = () => {
         dispatch(closeWindow(id))
 
@@ -83,14 +74,6 @@ const StandardWindow = (props) => {
         return null
     }
 
-    const getAccentColor = () => {
-        if (active) {
-            return "var(--main-accent-color)"
-        } else {
-            return "var(--alt-accent-color)"
-        }
-    }
-
     return (
         <Draggable
             position={{x: item.x, y: item.y}}
@@ -99,19 +82,13 @@ const StandardWindow = (props) => {
             onMouseDown={select}
         >
             <Wrapper active={active} zIndex={getzIndex()} minimzed={item.minimized}>
-                <Header>
-                    <IconWrapper>
-                        <IconGenerator type={item.type} dimensions={25} color={getAccentColor()}/>
-                    </IconWrapper>
-                    <HeaderText color={getAccentColor()}>{item.type}</HeaderText>
-                    <div>
-                        <MinimizeButton click={minimize} active={active}/>
-                        <CloseButton click={close} active={active}/>
-                    </div>
-                </Header>
+                <WindowHeader item={item} active={active} minimize={minimize} close={close}/>
                 <strong className="no-cursor">
                     <Content>
                         {props.children}
+                        <BottomRightWrapper viewBox="-750 50 1600 423" data-height="200">
+                            <Banner/>
+                        </BottomRightWrapper>
                     </Content>
                 </strong>
             </Wrapper>

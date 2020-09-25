@@ -1,7 +1,7 @@
 import React, {useState} from "react"
 import {useSelector, useDispatch} from "react-redux"
 import styled from "styled-components"
-import {CompactPicker, PhotoshopPicker} from "react-color"
+import {CompactPicker} from "react-color"
 
 import IconGenerator from "../icons"
 import {updateTheme} from "../reducers/theme"
@@ -116,7 +116,7 @@ const PickerWrapper = styled.div`
     padding-top: 25px;
 `
 
-const StyledPicker = styled(PhotoshopPicker)`
+const StyledPicker = styled(CompactPicker)`
     background: var(--alt-bg-color);
     padding-right: 1px;
 `

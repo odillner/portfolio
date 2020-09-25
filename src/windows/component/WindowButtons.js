@@ -1,14 +1,14 @@
 import React from "react"
 import styled from "styled-components"
-import IconGenerator from "../icons"
+import IconGenerator from "../../icons"
 
 const StyledButton = styled.button`
-  width: 20;
-  height: 20;
+  width: 40px;
+  height: 30px;
   position: relative;
   right: 0;
   background: var(--main-bg-color);
-  border: 2px solid var(--alt-bg-color);
+  border: 1px solid var(--alt-bg-color);
   transition: background 0.5s ease-out;
 
   &:hover {
